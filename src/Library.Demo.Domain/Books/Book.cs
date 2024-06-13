@@ -43,7 +43,6 @@ public record Book
         throw new NotImplementedException();
     }
 
-    public static Book CreateNew() => new();
     public static Book CreateNew(string ISBN, string title, string language, int numberOfPages, List<BookItem> bookItems)
     {
         return new()
