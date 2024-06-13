@@ -9,22 +9,7 @@ public record BookItem
     //public Rack? PlacedAt { get; private set; }
 
     private BookItem() { }
-    public bool Checkout()
-    {
-        throw new NotImplementedException();
-    }
-    
-    public bool CheckIn()
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool Reserve(){
-        throw new NotImplementedException();
-    }
-
-
-
+  
     public static BookItem CreateNew(BookId bookId, DateTime dateOfPurchase, Rack? placedAt=null)
     {
         return new()

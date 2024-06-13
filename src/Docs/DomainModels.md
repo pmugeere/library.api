@@ -1,14 +1,12 @@
 # Domain Models
 
 ## Book
-
-
 ```csharp
+
 ```
 
 ```json
 {
-    "Id":"",
-    
+  "Id": { "value": "" }
 }
 ```
