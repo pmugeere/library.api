@@ -2,6 +2,6 @@
 
 public interface IBookRepository
 {
-    public void Save(Book book);
+    public void CreateBook(Book book);
 
 }
