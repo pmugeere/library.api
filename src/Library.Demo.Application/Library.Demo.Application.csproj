@@ -7,9 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Books/DTOs/" />
+    <Folder Include="Books/CommandHandlers/" />
     <Folder Include="Books/Queries/" />
-    <Folder Include="Books/ResultObjects/" />
   </ItemGroup>
 
   <ItemGroup>

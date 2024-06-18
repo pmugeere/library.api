@@ -29,6 +29,5 @@ public class BookServiceTests
             x.ISBN.Equals(bookToBeCreated.ISBN) &&
             x.Title.Equals(bookToBeCreated.Title) 
         ), CancellationToken.None)).MustHaveHappened();
-
     }
 }

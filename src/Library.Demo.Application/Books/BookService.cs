@@ -13,10 +13,9 @@ public class BookService : IBookService
         _mediator = mediator;
     }
 
-    public async Task<bool> CreateBook(BookCreationDTO book)
+    public async Task<Result<BookDTO>> CreateBook(BookCreationDTO book)
     {
-        var command = new CreateBookCommand(book.ISBN,book.Title, book.Subject,book.Publisher,book.Language,book.NumberOfPages);
-        await _mediator.Send(command);
-        return true;
+        var command = new CreateBookCommand(book.ISBN, book.Title, book.Subject, book.Publisher, book.Language, book.NumberOfPages);
+        return await _mediator.Send(command);
     }
 }

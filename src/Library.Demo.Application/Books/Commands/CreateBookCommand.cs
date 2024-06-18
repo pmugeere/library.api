@@ -8,15 +8,7 @@ public record CreateBookCommand(
     string Subject,
     string Publisher,
     string Language,
-    int NumberOfPages) : IRequest
+    int NumberOfPages) : IRequest<Result<BookDTO>>
 {
 
-}
-
-public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand>
-{
-    public Task Handle(CreateBookCommand request, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
 }
