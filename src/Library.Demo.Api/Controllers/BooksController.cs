@@ -17,6 +17,13 @@ public class BooksController : ControllerBase
     [HttpGet("")]
     public async Task<IActionResult> GetBookAsync()
     {
-        return Ok("Welcome");
+        return Ok("Books..");
     }
+
+    [HttpPost("")]
+    public async Task<IActionResult> CreateBookAsync(BookCreateRequest book)
+    {
+        return Created();
+    }
+
 }

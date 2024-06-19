@@ -9,11 +9,16 @@ public static class IServiceCollectionExtensions
 {
     public static IServiceCollection RegisterServices(this IServiceCollection services)
     {
-        services.AddDatabase("User ID=libraray.demo.postgres;Password=libraray-docker;Host=localhost;Port=5432;Database=libraray.demo.db;");
         services.AddMediatR();
         services.AddApplicationService();
         services.AddSwaggerDocs();
         return services;
+    }
+
+    public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = configuration["ConnectionStrings:Default"];
+        return services.AddDatabase(connectionString);
     }
 
     private static void AddApplicationService(this IServiceCollection services)
