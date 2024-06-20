@@ -17,7 +17,7 @@ public static class IServiceCollectionExtensions
 
     public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration["ConnectionStrings:Default"];
+        var connectionString = configuration["ConnectionStrings:Default"] ?? throw new Exception("Default connection string is null");
         return services.AddDatabase(connectionString);
     }
 

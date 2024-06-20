@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Library.Demo.Domain;
+using MediatR;
 
 namespace Library.Demo.Application;
 
@@ -8,7 +9,7 @@ public record CreateBookCommand(
     string Subject,
     string Publisher,
     string Language,
-    int NumberOfPages) : IRequest<Result<BookDTO>>
+    int NumberOfPages) : IRequest<BookId>
 {
 
 }

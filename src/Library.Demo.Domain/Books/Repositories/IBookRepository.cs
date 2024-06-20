@@ -2,6 +2,5 @@
 
 public interface IBookRepository
 {
-    public void CreateBook(Book book);
-
+    public Task<BookId> Save(Book book);
 }

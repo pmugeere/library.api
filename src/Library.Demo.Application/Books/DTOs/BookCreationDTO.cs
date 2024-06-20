@@ -1,6 +1,7 @@
 namespace Library.Demo.Application;
 
-public record BookCreationDTO(string ISBN,
+public record BookCreationDTO(
+    string ISBN,
     string Title,
     string Subject,
     string Publisher,
@@ -8,4 +9,4 @@ public record BookCreationDTO(string ISBN,
     int NumberOfPages);
 
 
-    public record BookItemCreationDTO(string ISBN);
+public record BookItemCreationDTO(string ISBN);

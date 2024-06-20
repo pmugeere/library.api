@@ -1,4 +1,6 @@
-﻿namespace Library.Demo.Domain;
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Library.Demo.Domain;
 
 public record Book
 {
@@ -43,16 +45,22 @@ public record Book
         throw new NotImplementedException();
     }
 
-    public static Book CreateNew(string ISBN, string title, string language, int numberOfPages, List<BookItem> bookItems)
+    public static Book CreateNew(string ISBN,
+                                 string title,
+                                 string subject,
+                                 string publisher,
+                                 string language,
+                                 int numberOfPages)
     {
         return new()
         {
             Id = BookId.CreateNew(),
             ISBN = ISBN,
             Title = title,
+            Subject = subject,
+            Publisher = publisher,
             Language = language,
-            NumberOfPages = numberOfPages,
-            BookItems = bookItems ?? []
+            NumberOfPages = numberOfPages
         };
     }
 

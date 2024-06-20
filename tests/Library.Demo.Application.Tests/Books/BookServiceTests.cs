@@ -19,7 +19,7 @@ public class BookServiceTests
     }
 
     [Fact]
-    public async Task Given_Book_details_CreateBook_Should_Create_New_Book()
+    public async Task CreateBook_WithValidDTO_ShouldInvokeCreateBookCommand()
     {
         var bookToBeCreated = _fixture.Create<BookCreationDTO>();
 

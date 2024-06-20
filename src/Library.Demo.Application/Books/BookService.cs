@@ -13,9 +13,18 @@ public class BookService : IBookService
         _mediator = mediator;
     }
 
-    public async Task<Result<BookDTO>> CreateBook(BookCreationDTO book)
+    //ToDo: shoult we return a valueObject instead?
+    public async Task<Result<Guid>> CreateBook(BookCreationDTO book)
     {
-        var command = new CreateBookCommand(book.ISBN, book.Title, book.Subject, book.Publisher, book.Language, book.NumberOfPages);
-        return await _mediator.Send(command);
+        try
+        {
+            var command = new CreateBookCommand(book.ISBN, book.Title, book.Subject, book.Publisher, book.Language, book.NumberOfPages);
+            var bookCreationResult = await _mediator.Send(command);
+            return Result<Guid>.Success(bookCreationResult.Value);
+        }
+        catch (Exception e)
+        {
+            return Result<Guid>.FromException(e);
+        }
     }
 }

@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Library.Demo.Application;
 
-public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand,Result<BookDTO>>
+public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, BookId>
 {
     private readonly IBookRepository _bookRepository;
 
@@ -12,8 +12,9 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand,Result
         _bookRepository = bookRepository;
     }
 
-    public Task<Result<BookDTO>> Handle(CreateBookCommand request, CancellationToken cancellationToken)
+    public async Task<BookId> Handle(CreateBookCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var book = Book.CreateNew(command.ISBN,command.Title,command.Subject,command.Publisher,command.Language,command.NumberOfPages);
+        return await _bookRepository.Save(book);;
     }
 }
