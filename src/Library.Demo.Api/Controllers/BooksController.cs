@@ -20,7 +20,7 @@ public class BooksController : ControllerBase
         return Ok("Books..");
     }
 
-    [HttpGet("{Guid:bookId}/books")]
+    [HttpGet("{bookId:Guid}")]
     public async Task<IActionResult> GetBooks(Guid bookId)
     {
         return Ok("Books..");
@@ -29,9 +29,15 @@ public class BooksController : ControllerBase
     [HttpPost("")]
     public async Task<IActionResult> CreateBook(BookCreateRequest book)
     {
-        var newBook = new BookCreationDTO(book.ISBN,book.Title,book.Subject, book.Publisher, book.Language,book.NumberOfPages);
+        var newBook = new BookCreationDTO(book.ISBN, book.Title, book.Subject, book.Publisher, book.Language, book.NumberOfPages);
         var result = await _bookService.CreateBook(newBook);
-        return CreatedAtAction(nameof(GetBooks), new BookCreateResponse(result.Value));
+        if (result.IsSuccess)
+        {
+
+            return CreatedAtAction(nameof(GetBooks), new BookCreateResponse(result.Value));
+        }
+
+        return StatusCode(500);
     }
 
 }
