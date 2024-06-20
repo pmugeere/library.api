@@ -29,15 +29,12 @@ public class BooksController : ControllerBase
     [HttpPost("")]
     public async Task<IActionResult> CreateBook(BookCreateRequest book)
     {
-        var newBook = new BookCreationDTO(book.ISBN, book.Title, book.Subject, book.Publisher, book.Language, book.NumberOfPages);
-        var result = await _bookService.CreateBook(newBook);
+        var result = await _bookService.CreateBook(book.MapToBookCreationDTO());
         if (result.IsSuccess)
         {
-
             return CreatedAtAction(nameof(GetBooks), new BookCreateResponse(result.Value));
         }
 
-        return StatusCode(500);
+        return StatusCode(500,"");
     }
-
 }

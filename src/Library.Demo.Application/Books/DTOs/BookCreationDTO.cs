@@ -10,3 +10,17 @@ public record BookCreationDTO(
 
 
 public record BookItemCreationDTO(string ISBN);
+
+public static class BookCreationDTOMapper
+{
+    public static CreateBookCommand MapToCreateBookCommand(this BookCreationDTO book)
+    {
+        return new CreateBookCommand(
+            book.ISBN, 
+            book.Title, 
+            book.Subject, 
+            book.Publisher, 
+            book.Language, 
+            book.NumberOfPages);
+    }
+}

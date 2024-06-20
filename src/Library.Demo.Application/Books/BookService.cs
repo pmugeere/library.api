@@ -18,8 +18,7 @@ public class BookService : IBookService
     {
         try
         {
-            var command = new CreateBookCommand(book.ISBN, book.Title, book.Subject, book.Publisher, book.Language, book.NumberOfPages);
-            var bookCreationResult = await _mediator.Send(command);
+            var bookCreationResult = await _mediator.Send(book.MapToCreateBookCommand());
             return Result<Guid>.Success(bookCreationResult.Value);
         }
         catch (Exception e)

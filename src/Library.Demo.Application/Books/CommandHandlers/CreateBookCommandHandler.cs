@@ -14,7 +14,6 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, BookI
 
     public async Task<BookId> Handle(CreateBookCommand command, CancellationToken cancellationToken)
     {
-        var book = Book.CreateNew(command.ISBN,command.Title,command.Subject,command.Publisher,command.Language,command.NumberOfPages);
-        return await _bookRepository.Save(book);;
+        return await _bookRepository.Save(command.MapToBook());;
     }
 }
